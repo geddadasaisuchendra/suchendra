@@ -20,7 +20,7 @@ export default function HeroSection() {
               className="hidden sm:flex items-center gap-2 text-sm text-purple-900 hover:text-purple-600 transition-colors"
             >
               <Phone className="w-4 h-4" />
-              <span>+91 99593 40959</span>
+              <span>+91 9959366666</span>
             </a>
             <a
               href="https://www.instagram.com/sweetmemories_gm"
