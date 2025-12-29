@@ -1,9 +1,11 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Instagram, Phone, MapPin } from "lucide-react"
+import { Instagram, Phone, MapPin, Menu, X, CalendarCheck } from "lucide-react"
+import { useState } from "react";
 
 export default function HeroSection() {
+  const [open, setOpen] = useState(false);
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-white via-purple-50 to-pink-50">
       <div className="absolute inset-0 opacity-10">
@@ -11,36 +13,124 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,#ec4899,transparent_50%)]" />
       </div>
 
+          <>
       <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-purple-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between gap-2">
-          <div className="font-serif brand-highlight text-3xl">Sweet Memories</div>
-          <div className="flex items-center gap-2 sm:gap-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
+          <div className="font-serif brand-highlight text-2xl sm:text-3xl">
+            Sweet Memories
+          </div>
+
+          {/* Desktop */}
+          <div className="hidden sm:flex items-center gap-4">
             <a
               href="tel:+919959340959"
-              className="hidden sm:flex items-center gap-2 text-sm text-purple-900 hover:text-purple-600 transition-colors"
+              className="flex items-center gap-2 text-sm text-purple-900 hover:text-purple-600"
             >
               <Phone className="w-4 h-4" />
-              <span>+91 99593 40959</span>
+              +91 99593 40959
             </a>
+
             <a
               href="https://www.instagram.com/sweetmemories_gm"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 sm:gap-2 text-purple-900 hover:text-purple-600 transition-colors text-base"
+              className="flex items-center gap-2 text-purple-900 hover:text-purple-600"
             >
-              <Instagram className="w-7 h-7" />
-              <span className="hidden sm:inline">Follow Us</span>
+              <Instagram className="w-6 h-6" />
+              Follow Us
             </a>
+
             <Button
               size="sm"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-xs sm:text-sm px-3 sm:px-4"
-              onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
+              className="bg-gradient-to-r from-purple-600 to-pink-600 text-white"
+              onClick={() =>
+                document
+                  .getElementById("booking")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
             >
               Book Now
             </Button>
           </div>
+
+          {/* Mobile Toggle */}
+          <button
+            className="sm:hidden text-purple-800"
+            onClick={() => setOpen(true)}
+            aria-label="Open Menu"
+          >
+            <Menu className="w-7 h-7" />
+          </button>
         </div>
       </nav>
+
+      {/* ================= MOBILE CENTER LAYER ================= */}
+      {open && (
+  <div className="fixed inset-0 z-[60]">
+    {/* Backdrop */}
+    <div
+      className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+      onClick={() => setOpen(false)}
+    />
+
+    {/* Top-right floating menu */}
+    <div className="absolute top-4 right-4 flex flex-col items-center gap-5">
+      {/* Close icon (same place as hamburger) */}
+      <button
+        onClick={() => setOpen(false)}
+        className="text-white/90 hover:scale-110 transition"
+        aria-label="Close Menu"
+      >
+        <X className="w-7 h-7" />
+      </button>
+
+      {/* Call */}
+      <a
+        href="tel:+919959340959"
+        className="group flex flex-col items-center justify-center w-14 h-14 rounded-full
+                   bg-white/20 backdrop-blur-md border border-white/30
+                   hover:scale-110 hover:bg-purple-500/30
+                   transition-all duration-300 shadow-lg"
+      >
+        <Phone className="w-5 h-5 text-white" />
+        <span className="mt-1 text-[10px] text-white/90">Call</span>
+      </a>
+
+      {/* Instagram */}
+      <a
+        href="https://www.instagram.com/sweetmemories_gm"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex flex-col items-center justify-center w-14 h-14 rounded-full
+                   bg-white/20 backdrop-blur-md border border-white/30
+                   hover:scale-110 hover:bg-pink-500/30
+                   transition-all duration-300 shadow-lg"
+      >
+        <Instagram className="w-5 h-5 text-white" />
+        <span className="mt-1 text-[10px] text-white/90">Insta</span>
+      </a>
+
+      {/* Book */}
+      <button
+        onClick={() => {
+          setOpen(false);
+          document
+            .getElementById("booking")
+            ?.scrollIntoView({ behavior: "smooth" });
+        }}
+        className="group flex flex-col items-center justify-center w-14 h-14 rounded-full
+                   bg-gradient-to-br from-purple-600/90 to-pink-600/90
+                   hover:scale-110 transition-all duration-300 shadow-xl"
+      >
+        <CalendarCheck className="w-5 h-5 text-white" />
+        <span className="mt-1 text-[10px] text-white">Book</span>
+      </button>
+    </div>
+  </div>
+)}
+
+
+    </>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">

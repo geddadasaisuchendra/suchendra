@@ -81,7 +81,7 @@ const packages = [
 
 export default function ThemesGallery() {
   return (
-    <section className="py-16 sm:py-20 lg:py-24 px-4 bg-gradient-to-b from-background via-purple-50/30 to-background">
+    <section id ="packages" className="py-16 sm:py-20 lg:py-24 px-4 bg-gradient-to-b from-background via-purple-50/30 to-background">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
           <div className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full text-xs sm:text-sm font-medium text-purple-700 mb-4 sm:mb-6">

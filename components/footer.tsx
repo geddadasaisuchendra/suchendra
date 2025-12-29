@@ -78,9 +78,10 @@ export default function Footer() {
                 </button>
               </li>
               <li>
-                <a href="#packages" className="text-background/80 hover:text-background transition-colors">
+                <button onClick={() => document.getElementById("packages")?.scrollIntoView({ behavior: "smooth" })} 
+                className="text-background/80 hover:text-background transition-colors">
                   Our Packages
-                </a>
+                </button>
               </li>
               <li>
                 <a
